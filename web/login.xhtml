@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>BTSiS</title>
+    </h:head>
+    <h:body style="background-image: url('resources/images/loginWalpaper.jpg'); background-repeat: no-repeat; background-size: cover">
+        <p:growl id="growl" sticky="true" showDetail="true"/>
+        <h:form>
+            
+            <p:tabView dynamic="true" cache="true" style="margin:150px auto; height: 300px; width: 450px;  ">
+                <p:tab title="Vatandaş" >
+                    <p:panelGrid columns="1" style="border-width: 4; margin:auto auto; ">
+                        <f:facet name="header"> Vatandaş Giriş Ekranı</f:facet>
+                        <p:panelGrid columns="2" style="border:none; margin:0px Auto; " >
+                            <h:outputText value="TC"/>
+                            <p:inputText value="#{login.username}" />
+                            <h:outputText value="E-devlet Şifresi"/>
+                            <p:password value="#{login.password}" />
+                        </p:panelGrid>
+                      
+                        <p:splitButton value="Giriş" style="margin-left: 125px;" onclick="#{login.loginControl()}" action="kurumYonetici.xhtml" ajax="false" >
+                            <p:menuitem value="Şifremi Unuttum" />
+                            <p:separator />
+                            <p:menuitem value="İletişim"/>
+                        </p:splitButton>
+                        
+                        <f:facet name="footer"  >E-Belge Transfer Sistemi</f:facet>
+                    </p:panelGrid> 
+                </p:tab>
+                <p:tab title="Kurum" >
+                    <p:panelGrid columns="1" style="border: none; margin:auto auto;">
+                        <f:facet name="header"> Kurum Giriş Ekranı</f:facet>
+                        <p:panelGrid columns="2" style="border:none; margin:0px Auto; " >
+                            <h:outputText value="Kullanıcı Adı"/>
+                            <p:inputText value="#{login.username}" />
+
+                            <h:outputText value="Şifre"/>
+                            <p:password value="#{login.password}" />
+                        </p:panelGrid>
+                        <p:splitButton  value="Giriş" style="margin-left: 125px;" onclick="#{login.loginControl()}" action="kurumYonetici.xhtml" ajax="false" >
+                            <p:menuitem value="Şifremi Unuttum" />
+                            <p:menuitem value="Kullanıcı Adımı Unuttum" />
+                            <p:separator />
+                            <p:menuitem value="İletişim"/>
+                        </p:splitButton>
+                        <f:facet name="footer"  >E-Belge Transfer Sistemi</f:facet>
+                    </p:panelGrid> 
+                </p:tab>
+                <p:tab title="BTSiS">
+                    <p:panelGrid columns="1" style="border: none; margin:auto auto;">
+                        <f:facet name="header"> BTSiS Giriş Ekranı</f:facet>
+                        <p:panelGrid columns="2" style="border:none; margin:0px Auto; " >
+                            <h:outputText value="Kullanıcı Adı"/>
+                            <p:inputText value="#{login.username}" />
+
+                            <h:outputText value="Şifresi"/>
+                            <p:password value="#{login.password}" />
+                        </p:panelGrid>
+                         <p:splitButton value="Giriş" style="margin-left: 125px;"  onclick="#{login.loginControl()}" action="kurumYonetici.xhtml" ajax="false">
+                            <p:menuitem value="Şifremi Unuttum" />
+                            <p:menuitem value="Kullanıcı Adımı Unuttum" />
+                            <p:separator />
+                            <p:menuitem value="İletişim"/>
+                        </p:splitButton>
+                        <f:facet name="footer"  >E-Belge Transfer Sistemi</f:facet>
+                    </p:panelGrid> 
+                </p:tab>
+            </p:tabView>
+        </h:form>
+    </h:body>
+</html>
+

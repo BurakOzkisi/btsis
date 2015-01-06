@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <h:head>
+        <title>BTSiS Kurum Yönetici</title>
+    </h:head>
+    <h:body style="background-image: url('resources/images/loginWalpaper.jpg'); background-size:cover; " >
+        <h:form>
+            <p:growl id="growl" life="2000" />
+            <p:toolbar id="tb" >
+                <p:toolbarGroup align="left">
+                    <h:outputText style="padding: 10px;" value="Hoş Geldiniz!!!"></h:outputText>
+                    <h:outputText style="padding: 10px;" value="Default"></h:outputText>
+                    <h:outputText style="padding: 10px;"  value="User"></h:outputText>
+                    <p:separator />
+                    <p:commandButton type="button" value="New" icon="ui-icon-document" />
+                    <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
+                </p:toolbarGroup>
+                <p:toolbarGroup align="right">
+                    <p:separator />
+                    <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
+                    <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
+                    <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
+                    <p:separator />
+                    <p:clock pattern="HH:mm:ss" />
+                </p:toolbarGroup>
+            </p:toolbar>
+            <p:sticky target="tb" margin="5" rendered="true" />
+            <p:panel visible="true" id="GorevPanel" header="Görevler" style="font-size: x-large; margin-top:50px; margin-left: auto; margin-right: auto; width: 70%; padding:10px; ">
+                <div class="ui-grid ui-grid-responsive" style="margin-top: 10px; padding: 10px;margin-left: auto; margin-right: auto; width: 70%;">
+                    <p:commandButton onclick="PF('konu_ekle').show();" styleClass="btn btn-default btn-block" value="Konu Ekleme"  style=" height: 100px; " id="ajax" update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:tooltip id="toolTipGrow" for="ajax" value="This tooltip uses clip/explode effects for the animation"
+                               showEffect="clip" hideEffect="puff" />
+                    <p:commandButton styleClass="btn btn-primary btn-block" value="Belge Gönderme" style="  height: 100px; " id="ajax1" update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:tooltip id="toolTipGrow1" for="ajax1" value="This tooltip uses clip/explode effects for the animation"
+                               showEffect="blind" hideEffect="slide" />
+                    <p:commandButton styleClass="btn btn-success btn-block" value="Personel Kontrol"  style=" height: 100px; " id="ajax2" update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:tooltip id="toolTipGrow2" for="ajax2" value="This tooltip uses clip/explode effects for the animation"
+                               showEffect="pulsate" hideEffect="explode" />
+                    <p:commandButton styleClass="btn btn-info btn-block" value="Belge Kontrol" style=" height: 100px; " id="ajax3" update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:tooltip id="toolTipGrow3" for="ajax3" value="This tooltip uses clip/explode effects for the animation"
+                               showEffect="shake" hideEffect="drop" />
+                </div>
+                <p:dialog header="PERSONEL EKLE" widgetVar="konu_ekle" modal="true" height="100">
+                    <h:outputText value="..." />
+                    <div class="ui-grid ui-grid-responsive" >
+                        <p:commandButton styleClass="btn btn-primary btn-block" value="+ KONU EKLE " style="  height: 100px; " id="personel_ekle" update="growl" actionListener="#{buttonView.buttonAction}"  />
+                        <p:tooltip id="toolTipGrow1" for="personel_ekle" value="Buradan Personel Ekleyebilirsiniz.."
+                               showEffect="blind" hideEffect="slide" />       
+                    </div>
+                </p:dialog>
+            </p:panel>
+            <p:draggable for="GorevPanel" grid="20,40"/>
+            <!--Stac -->
+            <p:stack icon="resources/images/stack.png" expanded="true" >
+                <p:menuitem value="Exit" icon="resources/images/portfolio.png" url="#"/>
+                <p:menuitem value="Video" icon="resources/images/video.png" url="#"/>
+                <p:menuitem value="Email" icon="resources/images/email.png" url="#"/>
+                <p:menuitem value="AnaSayfa" icon="resources/images/home.png" url="#"/>
+                <p:menuitem value="Ayarlar" icon="resources/images/music.png" url="#"/>
+            </p:stack>
+        </h:form>
+    </h:body>
+</html>
+
