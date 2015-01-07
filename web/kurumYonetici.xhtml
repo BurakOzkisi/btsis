@@ -6,22 +6,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="resources/images/BTSiSexWord.png" />
     <h:head>
-        <title>BTSiS Kurum Yönetici</title>
+        <title >BTSiS Kurum Yönetici</title>
     </h:head>
     <h:body style="background-image: url('resources/images/loginWalpaper.jpg'); background-size:cover; " >
-        <h:form>
+        <h:form id="form">
             <p:growl id="growl" life="2000" />
             <p:toolbar id="tb" >
                 <p:toolbarGroup align="left">
-                    <h:outputText style="padding: 10px;" value="Hoş Geldiniz!!!"></h:outputText>
-                    <h:outputText style="padding: 10px;" value="Default"></h:outputText>
-                    <h:outputText style="padding: 10px;"  value="User"></h:outputText>
+                    <img height="30px" width="50px" src="resources/images/BTSiSexWord.png" alt="" style="margin-left: 5px;"/>
+                    <h:outputText  style="padding: 10px;" value="BTSiS Hoş Geldiniz! "></h:outputText>
+                    <h:outputText style="padding: 10px;" value="Burak"></h:outputText>
+                    <h:outputText style="padding: 10px;"  value="ÖZKİŞİ"></h:outputText>
                     <p:separator />
                     <p:commandButton type="button" value="New" icon="ui-icon-document" />
                     <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
                 </p:toolbarGroup>
-                <p:toolbarGroup align="right">
+                <p:toolbarGroup align="right" style="alignment-adjust: central;">
                     <p:separator />
                     <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
                     <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
@@ -31,32 +33,84 @@
                 </p:toolbarGroup>
             </p:toolbar>
             <p:sticky target="tb" margin="5" rendered="true" />
-            <p:panel visible="true" id="GorevPanel" header="Görevler" style="font-size: x-large; margin-top:50px; margin-left: auto; margin-right: auto; width: 70%; padding:10px; ">
-                <div class="ui-grid ui-grid-responsive" style="margin-top: 10px; padding: 10px;margin-left: auto; margin-right: auto; width: 70%;">
-                    <p:commandButton onclick="PF('konu_ekle').show();" styleClass="btn btn-default btn-block" value="Konu Ekleme"  style=" height: 100px; " id="ajax" update="growl" actionListener="#{buttonView.buttonAction}"  />
+            <p:panel menuTitle="Görevleriniz"  visible="true" id="GorevPanel" header="Görevler" style=" margin-top:50px; margin-left: auto; margin-right: auto; width: 70%;  ">
+                <div class="ui-grid ui-grid-responsive" style="font-size: large; margin-top: 10px; padding: 10px;margin-left: auto; margin-right: auto; width: 100%;">
+                    <p:commandButton  styleClass="btn btn-default btn-block" value="BELGE İSTEME"  style=" height: 100px; " id="ajax" update="growl" actionListener="#{buttonView.buttonAction}"  />
                     <p:tooltip id="toolTipGrow" for="ajax" value="This tooltip uses clip/explode effects for the animation"
                                showEffect="clip" hideEffect="puff" />
-                    <p:commandButton styleClass="btn btn-primary btn-block" value="Belge Gönderme" style="  height: 100px; " id="ajax1" update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:commandButton styleClass="btn btn-primary btn-block" value="BELGE GÖNDER" style="  height: 100px; " id="ajax1" update="growl" actionListener="#{buttonView.buttonAction}"  />
                     <p:tooltip id="toolTipGrow1" for="ajax1" value="This tooltip uses clip/explode effects for the animation"
                                showEffect="blind" hideEffect="slide" />
-                    <p:commandButton styleClass="btn btn-success btn-block" value="Personel Kontrol"  style=" height: 100px; " id="ajax2" update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:commandButton onclick="PF('personel_kontrol').show();" styleClass="btn btn-success btn-block" value="PERSONEL KONTROL"  style=" height: 100px; " id="ajax2" update="growl" actionListener="#{buttonView.buttonAction}"  />
                     <p:tooltip id="toolTipGrow2" for="ajax2" value="This tooltip uses clip/explode effects for the animation"
                                showEffect="pulsate" hideEffect="explode" />
-                    <p:commandButton styleClass="btn btn-info btn-block" value="Belge Kontrol" style=" height: 100px; " id="ajax3" update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:commandButton onclick="PF('belge_kontrol').show();" styleClass="btn btn-info btn-block" value="BELGE KONTROL" style=" height: 100px; " id="ajax3" update="growl" actionListener="#{buttonView.buttonAction}"  />
                     <p:tooltip id="toolTipGrow3" for="ajax3" value="This tooltip uses clip/explode effects for the animation"
-                               showEffect="shake" hideEffect="drop" />
+                               showEffect="puff" hideEffect="drop" />
                 </div>
-                <p:dialog header="PERSONEL EKLE" widgetVar="konu_ekle" modal="true" height="100">
-                    <h:outputText value="..." />
-                    <div class="ui-grid ui-grid-responsive" >
-                        <p:commandButton styleClass="btn btn-primary btn-block" value="+ KONU EKLE " style="  height: 100px; " id="personel_ekle" update="growl" actionListener="#{buttonView.buttonAction}"  />
-                        <p:tooltip id="toolTipGrow1" for="personel_ekle" value="Buradan Personel Ekleyebilirsiniz.."
-                               showEffect="blind" hideEffect="slide" />       
-                    </div>
-                </p:dialog>
             </p:panel>
-            <p:draggable for="GorevPanel" grid="20,40"/>
-            <!--Stac -->
+            <p:dialog   header="Gönderilebilir Belgeler" widgetVar="belge_kontrol" modal="false" showHeader="true" showEffect="true" closeOnEscape="true" maximizable="true" minimizable="true" minHeight="800" minWidth="600" height="800" width="600"
+                        style="animation:ease-in-out; margin-top:50px; margin-left: auto; margin-right: auto; width: 100%;  ">
+
+                <div class="ui-grid ui-grid-responsive"  >
+                    <p:commandButton id="belge_ekle" styleClass="btn btn-primary btn-block" value="+ BELGE EKLE " style="  height: 80px; "  update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:tooltip id="toolTipGrow1" for="belge_ekle" value="Buradan Gönderilebilir Yeni Belge Ekleyebilirsiniz.."
+                               showEffect="blind" hideEffect="slide" />
+                    <p:separator></p:separator>
+                    <p:dataTable var="car" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{dtLazyView.selectedCar}" id="carTable" lazy="true">
+                        <p:ajax event="rowSelect" listener="#{dtLazyView.onRowSelect}" update=":form:carDetail" oncomplete="PF('carDialog').show()" />
+                        <p:column headerText="Id" sortBy="#{car.id}" filterBy="#{car.id}">
+                            <h:outputText value="#{car.id}" />
+                        </p:column>
+                        <p:column headerText="Year" sortBy="#{car.year}" filterBy="#{car.year}">
+                            <h:outputText value="#{car.year}" />
+                        </p:column>
+                        <p:column headerText="Brand" sortBy="#{car.brand}" filterBy="#{car.brand}">
+                            <h:outputText value="#{car.brand}" />
+                        </p:column>
+                        <p:column headerText="Color" sortBy="#{car.color}" filterBy="#{car.color}">
+                            <h:outputText value="#{car.color}" />
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </p:dialog>
+            <p:dialog header="Car Detail" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="carDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty dtLazyView.selectedCar}" columnClasses="label,value">
+                        <f:facet name="header">
+                            <p:graphicImage name="demo/images/car/#{dtLazyView.selectedCar.brand}-big.gif"/> 
+                        </f:facet>
+
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{dtLazyView.selectedCar.id}" />
+
+                        <h:outputText value="Year" />
+                        <h:outputText value="#{dtLazyView.selectedCar.year}" />
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{dtLazyView.selectedCar.color}" style="color:#{dtLazyView.selectedCar.color}"/>
+
+                        <h:outputText value="Price:" />
+                        <h:outputText value="#{dtLazyView.selectedCar.price}">
+                            <f:convertNumber type="currency" currencySymbol="$" />
+                        </h:outputText>
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+            <p:dialog   header="Belge Gönderen Personeller" widgetVar="personel_kontrol" modal="false" showHeader="true" showEffect="true" closeOnEscape="true" maximizable="true" minimizable="true" minHeight="800" minWidth="600" height="800" width="600"
+                        style="animation:ease-in-out; margin-top:50px; margin-left: auto; margin-right: auto; width: 100%;  ">
+
+                <div class="ui-grid ui-grid-responsive"  >
+                    <p:commandButton id="personel_ekle" styleClass="btn btn-primary btn-block" value="+ PERSONEL EKLE " style="  height: 80px; "  update="growl" actionListener="#{buttonView.buttonAction}"  />
+                    <p:tooltip id="toolTipGrow1" for="personel_ekle" value="Buradan Belge Gönderen Personellerinizi Ekleyebilirsiniz."
+                               showEffect="blind" hideEffect="slide" />       
+                </div>
+            </p:dialog>
+
+            <p:draggable for="GorevPanel"/>
+            <!--StacK -->
             <p:stack icon="resources/images/stack.png" expanded="true" >
                 <p:menuitem value="Exit" icon="resources/images/portfolio.png" url="#"/>
                 <p:menuitem value="Video" icon="resources/images/video.png" url="#"/>

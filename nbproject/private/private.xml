@@ -6,7 +6,13 @@
             <file>file:/C:/Users/Burak/Documents/NetBeansProjects/btsis/web/kurumYonetici.xhtml</file>
         </group>
         <group>
+            <file>file:/C:/Users/Burak/Documents/NetBeansProjects/btsis/web/login.xhtml</file>
+            <file>file:/C:/Users/Burak/Documents/NetBeansProjects/btsis/src/java/LazySorter.java</file>
+            <file>file:/C:/Users/Burak/Documents/NetBeansProjects/btsis/src/java/LazyView.java</file>
+            <file>file:/C:/Users/Burak/Documents/NetBeansProjects/btsis/src/java/LazyCarDataModel.java</file>
             <file>file:/C:/Users/Burak/Documents/NetBeansProjects/btsis/web/kurumYonetici.xhtml</file>
+            <file>file:/C:/Users/Burak/Documents/NetBeansProjects/btsis/src/java/Car.java</file>
+            <file>file:/C:/Users/Burak/Documents/NetBeansProjects/btsis/src/java/CarService.java</file>
         </group>
     </open-files>
 </project-private>
